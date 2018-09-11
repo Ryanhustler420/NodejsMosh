@@ -220,3 +220,33 @@ emitter.on('messageLogged',(e) => {
 emitter.emit('messageLogged',{id:32,message:"Hey You have logged in successfully!"});
 
 ```
+
+## HTTP Module
+
+> Framework like express.js is build on top of http core lib of nodejs
+
+**http is come with emitter so the basic function of EventEmitter will be still there.**
+
+```javaScript
+
+const http = require('http');
+
+const server = http.createServer((req,res) => {
+
+    if(req.url === '/'){
+        res.write('Hello World');
+        res.end();
+    }
+    
+    if(req.url === '/api/login'){
+        res.write(JSON.stringify(['gaurav','saurav]));
+        res.end();
+    }
+
+});
+
+server.listen(3000);
+
+console.log('Listening on port 3000...');
+
+```
