@@ -239,7 +239,7 @@ const server = http.createServer((req,res) => {
     }
     
     if(req.url === '/api/login'){
-        res.write(JSON.stringify(['gaurav','saurav]));
+        res.write(JSON.stringify(['gaurav','saurav']));
         res.end();
     }
 
