@@ -37,3 +37,54 @@ console.log(global.message); //will be Undefined because its not available on gl
 
 
 ```
+
+## Module in nodejs
+
+
+```javaScript
+
+// when we define Variable or function that is added to global scope if you are writting
+// JavaScript for browser
+
+// like for example
+
+// when we define a function like say
+
+var sayHello  = function(){}
+
+// this function is added to global object and can be access
+
+// we can access it via window.sayHello
+
+
+// but in real world example we split our function into module for further Mentainence
+
+
+//NOTE:- why node's global object will not key track of all variables or function in its
+// global object because suppose in some casses if there are many module or third party
+// lib is there and you try to access a function than the Object 'global' will crash because
+// it will not keep track of right function like JavaScript's window Object
+
+// it can be overwritten so,
+// we should avoid define variable and function in global object because it can be
+// overwritten and can be cause of server/application crash
+
+// we need module
+// we need to create module for split code
+// it cant collide at all like for example same function name
+// module usesses code encapsulation like private function, so not chance for code
+// collision
+
+
+// like app.js is our main module as every application has a main module
+
+
+// just run
+console.log(module); // this is not a global variable search on google why!
+
+
+// so in node every file is module and the variable and function defiend inside that
+// module are only scoped inside that module
+
+```
+
