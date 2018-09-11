@@ -201,3 +201,22 @@ emitter.on('messageLogged',function(){
 emitter.emit('messageLogged');
 
 ```
+
+## Event Arguments
+
+> You can pass data from emit to listener
+
+```javaScript
+
+const EventEmitter = require('event');
+const emitter = new EventEmitter();
+
+//Register a listener
+emitter.on('messageLogged',(e) => {
+    console.log('Some one invoked!',e);
+});
+
+// Raise an event
+emitter.emit('messageLogged',{id:32,message:"Hey You have logged in successfully!"});
+
+```
