@@ -87,4 +87,26 @@ console.log(module); // this is not a global variable search on google why!
 // module are only scoped inside that module
 
 ```
+## Creating a module
 
+```javaScript
+
+var url = 'http://mylogger.io/log';
+
+
+function log(message){
+    // Send an HTTP request
+    console.log(message);
+}
+
+// if we export an object to exports that will be availabel to entire application
+
+// for further detail run code
+
+// console.log(module);
+
+module.exports.log = log;
+module.exports.endPointurl = url;
+
+
+```
