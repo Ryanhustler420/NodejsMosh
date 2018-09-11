@@ -110,3 +110,39 @@ module.exports.endPointurl = url;
 
 
 ```
+
+## Loading a module
+
+```javaScript
+
+
+// to load a module we use require();
+// always use const instead of var because const are not reset.
+
+const logger = require(./logger);
+console.log(logger);
+
+logger.log('Message');
+
+// we can also export a single function like this
+
+
+// logger.js
+
+function log(message){
+    console.log(message);
+}
+
+module.exports = log;
+
+
+
+// accessing app.js
+
+const log = require(./logger);
+
+log('message');
+
+
+
+```
