@@ -184,23 +184,20 @@ module.exports = log;
 
 > This is wrapper function also know as IIFE in javaScript Node doesn't execute our code directly.
 
+## Event Module
+
+```javaScript
 
 
+const EventEmitter = require('event');
+const emitter = new EventEmitter();
 
+//Register a listener
+emitter.on('messageLogged',function(){
+    console.log('Some one invoked!');
+});
 
+// Raise an event
+emitter.emit('messageLogged');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
