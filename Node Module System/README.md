@@ -144,5 +144,63 @@ const log = require(./logger);
 log('message');
 
 
+```
+
+## Module Wrapper Function
+
+> you can see this in cammand line using and self made mistake like
+
+``
+Make Sure you make this mistake in first line of your Editor
+``
+
+```javaScript
+var x=;
+
+function log(message){
+    console.log(message);
+}
+
+module.exports = log;
 
 ```
+
+``What Exectaly Happening behind the scene is this``
+
+```javaSript
+(function(exports,require,module,__filename,__dirname){
+
+    var url = "google.com";
+
+    function log(message){
+        console.log(message);
+    }
+
+    module.exports = log;
+
+})
+
+```
+
+> This is wrapper function also know as IIFE in javaScript Node doesn't execute our code directly.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
