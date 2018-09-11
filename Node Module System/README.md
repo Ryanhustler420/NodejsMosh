@@ -167,7 +167,7 @@ module.exports = log;
 
 ``What Exectaly Happening behind the scene is this``
 
-```javaSript
+```javaScript
 (function(exports,require,module,__filename,__dirname){
 
     var url = "google.com";
