@@ -1,0 +1,15 @@
+{
+  "name": "nodejsmosh",
+  "version": "1.0.0",
+  "description": "- Every Node application has a package.json ﬁle that includes metadata about the application.\r   This includes the name of the application, its version, dependencies, etc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^5.2.14",
+    "underscore": "^1.9.1"
+  }
+}
