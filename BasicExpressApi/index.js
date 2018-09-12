@@ -1,3 +1,5 @@
+const startupDebugger = require('debug')('app:startup');
+const dbDebugger = require('debug')('app:db');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const Joi = require('joi');
@@ -18,9 +20,19 @@ app.use(helmet());
 // export NODE_ENV=production
 if(app.get('env') === 'development'){
     app.use(morgan('tiny'));
-    console.log('Morgan enabled...');
+
+    // export DEBUG=app:startup in command Line
+    // or
+    // export DEBUG=app:startup,app:db
+    // or
+    // export DEBUG=app:*
+
+    startupDebugger('Morgan enabled...');
+    // export DEBUG=
+
 }
 
+dbDebugger('Connected to the database...');
 
 const courses = [
   {id:1,name:'BBA'},
