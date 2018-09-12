@@ -43,3 +43,36 @@ $ npm list
 
 $ npm list --depth=0
 ```
+# Viewing Registry Info for a Package
+
+```
+
+$ npm view mongoose -> show package
+
+===OR===
+
+$ npm view mongoose dependencies -> only shows dependenies
+
+{ async: '2.6.1',
+  bson: '~1.0.5',
+  kareem: '2.2.1',
+  'lodash.get': '4.4.2',
+  mongodb: '3.1.4',
+  'mongodb-core': '3.1.3',
+  'mongoose-legacy-pluralize': '1.0.2',
+  mpath: '0.5.1',
+  mquery: '3.2.0',
+  ms: '2.0.0',
+  'regexp-clone': '0.0.1',
+  'safe-buffer': '5.1.2',
+  sliced: '1.0.1' }
+
+
+===OR===
+
+$ npm view mongoose version
+
+```
+
+
+
