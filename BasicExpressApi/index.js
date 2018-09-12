@@ -1,38 +1,24 @@
-const startupDebugger = require('debug')('app:startup');
-const dbDebugger = require('debug')('app:db');
+const Debug = require('debug')('app:debug');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const Joi = require('joi');
 const express = require('express');
 const app = express();
 
-// Middleware for parsing json data from client side
-app.use(express.json());
-//
-// console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
-// console.log(`app: ${app.get('env')}`);
+app.set('view engine','pug');
+app.set('views','./views');
 
-//built in Middleware
-app.use(express.urlencoded({extended:true})); //key=value&key=value
-app.use(express.static('public')); // serve static pages from public folder
+app.use(express.json());
+
+app.use(express.urlencoded({extended:true}));
+app.use(express.static('public'));
 app.use(helmet());
 
-// export NODE_ENV=production
+
 if(app.get('env') === 'development'){
     app.use(morgan('tiny'));
-
-    // export DEBUG=app:startup in command Line
-    // or
-    // export DEBUG=app:startup,app:db
-    // or
-    // export DEBUG=app:*
-
-    startupDebugger('Morgan enabled...');
-    // export DEBUG=
-
+    Debug('Morgan enabled...');
 }
-
-dbDebugger('Connected to the database...');
 
 const courses = [
   {id:1,name:'BBA'},
@@ -41,7 +27,8 @@ const courses = [
 ]
 
 app.get('/',(req,res) => {
-  res.send('Hello World');
+  // res.send('Hello World');
+  res.render('index',{title:"My Express App",message:"Hello"});
 });
 
 app.get('/api/courses',(req,res) => {
