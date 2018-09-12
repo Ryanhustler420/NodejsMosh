@@ -6,12 +6,21 @@ const app = express();
 
 // Middleware for parsing json data from client side
 app.use(express.json());
+//
+// console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
+// console.log(`app: ${app.get('env')}`);
 
 //built in Middleware
 app.use(express.urlencoded({extended:true})); //key=value&key=value
 app.use(express.static('public')); // serve static pages from public folder
 app.use(helmet());
-app.use(morgan('tiny'));
+
+// export NODE_ENV=production
+if(app.get('env') === 'development'){
+    app.use(morgan('tiny'));
+    console.log('Morgan enabled...');
+}
+
 
 const courses = [
   {id:1,name:'BBA'},
