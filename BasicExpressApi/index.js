@@ -9,6 +9,10 @@ app.use(express.json());
 app.use(logger);
 app.use(auth);
 
+//built in Middleware
+app.use(express.urlencoded({extended:true})); //key=value&key=value
+app.use(express.static('public')); // serve static pages from public folder
+
 
 const courses = [
   {id:1,name:'BBA'},
