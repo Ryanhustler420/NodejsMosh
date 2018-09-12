@@ -1,18 +1,17 @@
+const helmet = require('helmet');
+const morgan = require('morgan');
 const Joi = require('joi');
-const logger = require('./logger').log;
-const auth = require('./logger').auth;
 const express = require('express');
 const app = express();
 
 // Middleware for parsing json data from client side
 app.use(express.json());
-app.use(logger);
-app.use(auth);
 
 //built in Middleware
 app.use(express.urlencoded({extended:true})); //key=value&key=value
 app.use(express.static('public')); // serve static pages from public folder
-
+app.use(helmet());
+app.use(morgan('tiny'));
 
 const courses = [
   {id:1,name:'BBA'},
