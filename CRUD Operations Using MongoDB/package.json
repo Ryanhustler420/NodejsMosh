@@ -1,0 +1,17 @@
+{
+  "name": "mongo_operations",
+  "version": "1.0.0",
+  "description": "simple mongo app for CRUD operation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mongo"
+  ],
+  "author": "GauravGupta",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^5.2.15"
+  }
+}
