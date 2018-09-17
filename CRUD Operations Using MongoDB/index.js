@@ -38,19 +38,11 @@ async function createCourse(){
 
 async function getCourses(){
   const courses = await Course
-  // .find({name:'Node.js Course,',isPublished:true})
-  
-  // Starts with Gaurav
-  .find({author: /^Gaurav/ })
-
-  //Ends with Gupta
-  .find({author: /^Gupta$/i })
-
-  // Contains Gupta, i = case insansetive
-  .find({author:/.*Gupta*/})
+  .find({name:'Node.js Course,',isPublished:true})
   .limit(10)
   .sort({name: 1})  
-  .select({name:1,tags:1});
+  // .select({name:1,tags:1});
+  .count();
   console.log(courses);
 }
 
