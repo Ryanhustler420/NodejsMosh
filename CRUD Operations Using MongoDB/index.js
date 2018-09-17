@@ -48,10 +48,16 @@ async function getCourses(){
   // in
   // nin (non in)
 
+  // or
+  // and
+
   const courses = await Course
-  // .find({name:'Node.js Course'})
+  // .find({name:'Node.js Course,',isPublished:true})
   // .find({price:{ $gt: 10 , $lte: 20}})
-  .find({price:{ $in:[10,15,20] }})
+  // .find({price:{ $in:[10,15,20] }})
+  .find()
+  .or([{author:"GauravGupta"},{ isPublished: true}])
+  // .and([ ])
   .limit(10)
   .sort({name: 1})
   .select({name:1,tags:1});
