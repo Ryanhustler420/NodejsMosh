@@ -58,32 +58,20 @@ updateCourse('5b9f6ac2c5660f283875a90d');
 
 
 async function updateCourse(id){
-  // Approach: Query first
-  // findById()
-  // Modify its properties
-  // save()
-
-  const course = await Course
-  .findById(id);
-
-  if(!course) return;
-
-  course.isPublished = true;
-  course.author = 'GauravGupta';
-
-  // course.set({
-  //   isPublished: true,
-  //   author: "GauravGupta"
-  // });
-
-  const result = await course.save();
-  console.log(result);
-
 
   // Approach: Update first
   // Update directly
   // Optionally: get the updated document
 
+  //findByIdAndUpdate();
+  
+  const result = await Course.updateOne({_id:id},{
+    $set:{
+      author:'Gaurav',
+      isPublished: false
+    }
+  });
+  console.log(result);
 }
 
 
