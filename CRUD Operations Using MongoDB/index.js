@@ -54,17 +54,8 @@ async function getCourses(){
 
 // getCourses();
 
-updateCourse('5b9f6ac2c5660f283875a90d');
-
 
 async function updateCourse(id){
-
-  // Approach: Update first
-  // Update directly
-  // Optionally: get the updated document
-
-  //findByIdAndUpdate();
-  
   const result = await Course.updateOne({_id:id},{
     $set:{
       author:'Gaurav',
@@ -74,6 +65,13 @@ async function updateCourse(id){
   console.log(result);
 }
 
+// updateCourse('5b9f6ac2c5660f283875a90d');
 
 
+async function removeCourse(id){
+ const result = await Course.deleteOne({ _id:id})
+ console.log(result);
+}
+
+removeCourse('5b9f6ac2c5660f283875a90d');
 
