@@ -61,15 +61,14 @@ async function createCourse(){
     price:15
   });
   try{
-    // course.validate((err) => {
-    //   if(err) { }
-    // });
-
     const result = await course.save();
     console.log(result);
   
   }catch(e){
-    console.log(e.message);
+    // console.log(e.errors);
+    for(field in e.errors){
+      console.log(e.errors[field].message);
+    }
   }
 }
 
