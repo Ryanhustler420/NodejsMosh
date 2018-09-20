@@ -70,3 +70,66 @@
     const result = await Course.deleteMany({ _id: id }); 
     const course = await Course.ﬁndByIdAndRemove(id);
 ```
+
+
+# Mongoose: Validation
+
+- When deﬁning a schema, you can set the type of a property to a SchemaType object. You use this object to deﬁne the validation requirements for the given property.
+
+```javaScript
+
+// Adding validation 
+
+new mongoose.Schema({   
+    name: { 
+        type: String,
+        required: true
+        }
+    });
+
+```
+
+- Validation logic is executed by Mongoose prior to saving a document to the database. You can also trigger it manually by calling the validate() method.
+
+1. Built-in validators: 
+   - Strings: minlength, maxlength, match, enum 
+   - Numbers: min, max - Dates: min, max 
+   - All types: required
+ 
+ ```javaScript
+// Custom validation 
+    tags: [
+        type: Array,
+        validate: {
+            validator: function(v) { return v && v.length > 0; },
+            message: ‘A course should have at least 1 tag.’
+        }
+    ]
+ ```
+ 
+- If you need to talk to a database or a remote service to perform the validation, you need to create an async validator:
+
+```javaScript
+validate: {
+    isAsync: true
+    validator: function(v, callback) {
+        // Do the validation, when the result is ready, call the callback
+        callback(isValid); 
+    }
+ }
+```
+
+2. Other useful SchemaType properties:
+   - Strings: lowercase, uppercase, trim 
+   - All types: get, set (to deﬁne a custom getter/setter)
+   
+```javaScript
+
+price: {
+    type: Number,
+    get: v => Math.round(v),
+    set: v => Math.round(v)
+   }
+
+```
+
