@@ -4,44 +4,21 @@ mongoose.connect('mongodb://localhost/playground')
   .then(() => console.log('Connected to MongoDB...'))
   .catch(err => console.error('Could not connect to MongoDB...', err));
 
-const Author = mongoose.model('Author', new mongoose.Schema({
+const authorSchema = new mongoose.Schema({
   name: String,
   bio: String,
-  website: {
-      type:mongoose.Schema.Types.ObjectId,
-      ref:'Website'
-  }
-}));
+  website: String
+});
 
-const Website = mongoose.model('Website', new mongoose.Schema({
-    url:String
-}));
-
-// const websiteUrl = new Website({
-//     url:'http://google.com/author/GauravGupta'
-// });
-
-// websiteUrl.save();
-
+const Author = mongoose.model('Author', authorSchema);
 
 const Course = mongoose.model('Course', new mongoose.Schema({
   name: String,
-  author :{
-      type:mongoose.Schema.Types.ObjectId,
-      ref:'Author'
+  author:{
+     type:authorSchema,
+     required:true
   }
 }));
-
-async function createAuthor(name, bio, website) { 
-  const author = new Author({
-    name, 
-    bio, 
-    website 
-  });
-
-  const result = await author.save();
-  console.log(result);
-}
 
 async function createCourse(name, author) {
   const course = new Course({
@@ -54,17 +31,25 @@ async function createCourse(name, author) {
 }
 
 async function listCourses() { 
-  const courses = await Course
-    .find()
-    .populate('author','name')
-    .select('name author');
+  const courses = await Course.find();
   console.log(courses);
 }
 
-// createAuthor('Mosh', 'My bio', '5ba328fae5ff7c0370bc9a08');
 
-// createCourse('Angular Course', '5ba329202377240e4083f887')
+async function updateAuthor(courseId){
+    // const course = await Course.findById(courseId);
+    // 5ba32b7618e4fc3b60026cc1
+    const course = await Course.update({_id:courseId},{
+        // $set:{
+        //     'author.name':'SauravGupta'
+        // }
 
-// listCourses();
-
-// Author.find().populate('website').then(console.log);
+        $unset:{
+            'author':''
+        }
+    });
+    // course.author.name = 'GauravGupta';
+    // course.save();
+}
+updateAuthor('5ba32b7618e4fc3b60026cc1');
+// createCourse('Angular Course', new Author({ name: 'Gaurav' }));
