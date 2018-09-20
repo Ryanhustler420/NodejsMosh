@@ -7,8 +7,22 @@ mongoose.connect('mongodb://localhost/playground')
 const Author = mongoose.model('Author', new mongoose.Schema({
   name: String,
   bio: String,
-  website: String
+  website: {
+      type:mongoose.Schema.Types.ObjectId,
+      ref:'Website'
+  }
 }));
+
+const Website = mongoose.model('Website', new mongoose.Schema({
+    url:String
+}));
+
+// const websiteUrl = new Website({
+//     url:'http://google.com/author/GauravGupta'
+// });
+
+// websiteUrl.save();
+
 
 const Course = mongoose.model('Course', new mongoose.Schema({
   name: String,
@@ -42,12 +56,15 @@ async function createCourse(name, author) {
 async function listCourses() { 
   const courses = await Course
     .find()
-    .select('name');
+    .populate('author','name')
+    .select('name author');
   console.log(courses);
 }
 
-// createAuthor('Mosh', 'My bio', 'My Website');
+// createAuthor('Mosh', 'My bio', '5ba328fae5ff7c0370bc9a08');
 
-createCourse('Node Course', '5ba3226b8396a81488111562')
+// createCourse('Angular Course', '5ba329202377240e4083f887')
 
 // listCourses();
+
+// Author.find().populate('website').then(console.log);
