@@ -7,7 +7,7 @@ module.exports = function (req, res, next){
     
     // this trows an Error!
     try{
-        //return the payload
+        //return the payload like {'name':'Gaurav','_id':1234} to routes
         const decoded = jwt.verify(token, config.get('jwtPrivateKey'));
         req.user = decoded;
         next();
