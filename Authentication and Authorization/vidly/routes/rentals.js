@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 // CI 5ba39ed592f78722f89a3130
 // MI 5ba39e5c92f78722f89a312e
 
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
   const { error } = validate(req.body); 
   if (error) return res.status(400).send(error.details[0].message);
 
