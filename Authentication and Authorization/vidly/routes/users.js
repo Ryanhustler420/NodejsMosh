@@ -30,7 +30,8 @@ router.post('/',async (req,res) => {
     await user.save();
     // res.send({
     //     name:user.name,
-    //     email:user.email
+    //     email:user.email,
+    //     isAdmin:user.isAdmin 
     // });
 
     const token = user.generateAuthToken();
