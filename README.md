@@ -51,3 +51,21 @@
     } 
   ```
    
+# API Docs [Routes]
+
+1. auth / loggin
+   - /api/auth/      {email,password} and generate token
+   
+2. customer
+   - /api/customers/      - get     list all customer
+   - /api/customers/      - post    register new customer
+   - /api/customers/:id   - put     modify the existing customer
+   - /api/customers/:id   - delete  delete an customer only admin is allow to do this operation
+   - /api/customers/:id   - get     get a customer with _id
+
+3. genres
+   - /api/genres/         - get     list all genres
+   - /api/genres/         - post    add a new genre
+   - /api/genres/         - put     modify a genre
+   - /api/genres/         - delete  delete a genre only admin is allow to do this operation
+
