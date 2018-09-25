@@ -51,3 +51,105 @@
     } 
   ```
    
+# API Docs [Routes]
+
+1. auth / loggin
+   - /api/auth/           - **post**    and generate token
+   
+   ```javaScript
+   
+   {
+      "email":"test@test.com",
+      "password":"123456789"
+   }
+   
+   ```
+   
+2. customer
+   - /api/customers/      - **get**     list all customer
+   - /api/customers/      - **post**    register new customer
+   
+   ```javaScript
+      {
+        "name":"SauravGupta" ,
+        "isGold": false,
+        "phone": 100
+      }
+   ```
+   - /api/customers/:id   - **put**     modify the existing customer
+   
+    ```javaScript
+    {
+      "name":"GauravGupta" ,
+      "isGold": true,
+      "phone": 420
+    }
+    ```   
+   - /api/customers/:id   - **delete**  delete an customer only admin is allow to do this operation
+   - /api/customers/:id   - **get**     get a customer with _id
+
+3. genres
+   - /api/genres/            - **get**     list all genres
+   - /api/genres/            - **post**    add a new genre
+   
+   ```javaScript
+     {
+       "name":"horror" 
+     }
+   ```
+   - /api/genres/:id         - **put**     modify a genre
+   
+   ```javaScript
+     {
+       "name":"comedy" 
+     }
+   ``` 
+   - /api/genres/            - **delete**  delete a genre only admin is allow to do this operation
+
+4. movies
+   - /api/movies/            - **get**     list all movies
+   - /api/movies/            - **post**    add a new movie
+   
+   ```javaScript
+    {
+      "title":"Dead Pool",
+      "genreId":"5ba9e02597c3722e703d9faf",
+      "numberInStock":8,
+      "dailyRentalRate":4.99   
+    }
+   ```
+   - /api/movies/:id         - **put**     modify a movie
+   
+   ```javaScript
+    {
+      "title":"Dead Pool",
+      "genreId":"5ba9e02597c3722e703d9faf",
+      "numberInStock":8,
+      "dailyRentalRate":4.99   
+    }
+   ```   
+   - /api/movies/:id         - **delete**  delete a movie only admin is allow to do this operation
+   - /api/movies/:id         - **get**     get a movie with _id
+
+5. rentals
+   - /api/rentals/        - **get**     list all the rentals
+   - /api/rentals/        - **post**    add a new rental
+   
+   ```javaScript
+   {
+      "customerId":"5ba9e02597c3722e703d9faf",
+      "movieId":"5ba3a276b62e101b04498e02"
+   }
+   ```
+
+6. users
+   - /api/users/me        - **get**     get the current user information
+   - /api/users/          - **post**    register a new user
+   
+   ```javaScript
+    {
+       "name":"Gaurav",
+       "email":"GauravKumar123@gmail.com",
+       "isAdmin": true
+    }
+   ```
