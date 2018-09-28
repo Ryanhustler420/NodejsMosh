@@ -104,7 +104,7 @@
        "name":"comedy" 
      }
    ``` 
-   - /api/genres/            - **delete**  delete a genre only admin is allow to do this operation
+   - /api/genres/:id          - **delete**  delete a genre only admin is allow to do this operation
 
 4. movies
    - /api/movies/            - **get**     list all movies
